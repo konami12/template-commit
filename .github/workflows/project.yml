@@ -13,4 +13,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: 💡 Creando proyecto en git
         run: |
-            echo "Creando proyecto en git ${{ github.repository }}"
+            echo "Creando proyecto en git ${{ github.repository.name }}"
