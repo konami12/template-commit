@@ -1,1 +1,2 @@
-npx --no-install commitlint --edit
+npm install --save-dev better-commits
+
