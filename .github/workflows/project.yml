@@ -20,3 +20,12 @@ jobs:
            "name": "${{ github.event.repository.name }}",
            "body": "Este es un proyecto creado automáticamente con GitHub Actions."
          }'
+      - name: 💡 Creando proyecto en git 2
+        run: |
+         curl -X POST -H "Authorization: bearer ${{ secrets.MY_GITHUB_PAT }}" \
+         -H "Content-Type: application/json" \
+         -H "Accept: application/vnd.github.v3+json" \
+         https://api.github.com/graphql \
+         -d '{
+           "query": "mutation { createProjectV2(input: {ownerId: \"${{ github.repository_owner }}\", title: \"${{ github.event.repository.name }}\"}) { projectV2 { id } } }"
+         }'
