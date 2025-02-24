@@ -13,4 +13,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: 💡 Creando proyecto en git
         run: |
-            echo "Creando proyecto en git ${{ github.repository.name }}"
+         curl -X POST https://api.github.com/repos/${{ github.repository }}/projects \
+         -H "Accept: application/vnd.github.v3+json" \
+         -H "Authorization: token ${{ secrets.MY_GITHUB_PAT }}" \
+         -d '{
+           "name": "${{ github.event.repository.name }}",
+           "body": "Este es un proyecto creado automáticamente con GitHub Actions."
+         }'
